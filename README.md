@@ -18,9 +18,6 @@ BMSProject/
 - Java
 - Maven
 - Spring 
-- JUnit/TestNG (for testing)
-- Apache Kafka / MySQL (if applicable)
-- Any frameworks/tools you've used
 
 ---
 
