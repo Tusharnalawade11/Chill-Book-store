@@ -2,6 +2,8 @@
 
 A Java-based backend system built using Maven. This project serves as a backend management system for handling business logic, service layers, and data operations.
 
+![Architecture](image.png)
+
 
 ## 📦 Project Structure
 

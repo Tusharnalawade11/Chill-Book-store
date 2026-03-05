@@ -1,0 +1,46 @@
+<mxfile host="65bd71144e">
+    <diagram name="Book Management System Architecture" id="0">
+        <mxGraphModel dx="881" dy="355" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="presentation" value="Presentation Layer&#xa;(REST Controllers / UI)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="300" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="controller" value="Controller Layer&#xa;(BookController)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="300" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="service" value="Service Layer&#xa;(BookService)&#xa;Business Logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="300" width="220" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="dao" value="DAO Layer&#xa;(BookRepository / JPA)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="840" y="300" width="220" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" style="endArrow=block;html=1;" parent="1" source="presentation" target="controller" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" style="endArrow=block;html=1;" parent="1" source="controller" target="service" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" style="endArrow=block;html=1;" parent="1" source="service" target="dao" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" style="endArrow=block;html=1;" parent="1" source="dao" target="database" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="group;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="1125" y="235" width="180" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="database" value="&lt;br&gt;&lt;div&gt;Table: Book&lt;br&gt;- id&lt;br&gt;- title&lt;br&gt;- author&lt;br&gt;- price&lt;br&gt;- genre&lt;/div&gt;" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="4" vertex="1">
+                    <mxGeometry width="180" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Database Layer&lt;br style=&quot;scrollbar-color: rgb(75, 75, 75) rgb(27, 29, 30);&quot;&gt;(MySQL / PostgreSQL)&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="4">
+                    <mxGeometry x="35" y="20" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;u&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(102, 255, 255));&quot; face=&quot;Garamond&quot;&gt;Book Management System&lt;/font&gt;&lt;/u&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;1. Add a Book&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2. Update a Book&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;3. Delete a book&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;4. Fetch a Book&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;5. Fetch All Books&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;6. Fetch Book By Genre&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" vertex="1" parent="1">
+                    <mxGeometry x="419" y="110" width="170" height="160" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
