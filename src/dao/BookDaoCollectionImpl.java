@@ -1,19 +1,18 @@
 package dao;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
 import model.AuthorPojo;
 import model.BookPojo;
 
 public class BookDaoCollectionImpl implements BookDao{
 
-	private List<BookPojo> bookDataStore;
+	final private List<BookPojo> bookDataStore;
 	
 	public BookDaoCollectionImpl() {
-		bookDataStore = new ArrayList<BookPojo>();
+		bookDataStore = new ArrayList<>();
 		AuthorPojo author = new AuthorPojo(501, "J.K", "Rowling");
 		bookDataStore.add(new BookPojo(101, "Harry Potter and the Chamber of Secrets", author, 300, "Fantasy", ""));
 		bookDataStore.add(new BookPojo(102, "Harry Potter and the Deathly Hallows", author, 400, "Fantasy", ""));
@@ -34,7 +33,7 @@ public class BookDaoCollectionImpl implements BookDao{
 		// return the item and break
 		BookPojo fetchedBook = null;
 		List<BookPojo> searchedBook = bookDataStore.stream().filter((eachBook) -> eachBook.getBookId() == bookId).toList();
-		if(searchedBook.size() != 0) {
+		if(!searchedBook.isEmpty()) {
 			fetchedBook = searchedBook.get(0);
 		}
 		if(fetchedBook == null) return Optional.empty();
@@ -43,8 +42,31 @@ public class BookDaoCollectionImpl implements BookDao{
 
 	@Override
 	public List<BookPojo> fetchByBookGenre(String genre) {
-		List<BookPojo> searchedBooks = bookDataStore.stream().filter((eachBook)->eachBook.getBookGenre().equals(genre)).toList();
+		List<String> requestedGenres = normalizeGenres(genre);
+		if (requestedGenres.isEmpty()) {
+			return List.of();
+		}
+		List<BookPojo> searchedBooks = bookDataStore.stream()
+				.filter((eachBook) -> hasAnyGenreMatch(eachBook.getBookGenre(), requestedGenres))
+				.toList();
 		return searchedBooks;
+	}
+
+	private boolean hasAnyGenreMatch(String bookGenre, List<String> requestedGenres) {
+		List<String> bookGenres = normalizeGenres(bookGenre);
+		return bookGenres.stream().anyMatch(requestedGenres::contains);
+	}
+
+	private List<String> normalizeGenres(String genreValue) {
+		if (genreValue == null || genreValue.isBlank()) {
+			return List.of();
+		}
+		return Arrays.stream(genreValue.split("/"))
+				.map(String::trim)
+				.filter((genre) -> !genre.isBlank())
+				.map(String::toLowerCase)
+				.distinct()
+				.toList();
 	}
 
 	@Override
