@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chill Book Store</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>Book Management System</h1>
+      <p>Simple frontend for the operations in your presentation/controller layers.</p>
+    </header>
+
+    <section class="panel">
+      <h2>API Config</h2>
+      <label for="apiBaseUrl">Base URL</label>
+      <input id="apiBaseUrl" type="text" value="http://localhost:8080/api" />
+      <small class="muted">Expected endpoints: <code>/books</code>, <code>/books/{id}</code>, <code>/books/genre/{genre}</code></small>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <h2>Fetch</h2>
+        <button id="fetchAllBtn" type="button">Fetch All Books</button>
+
+        <form id="fetchByIdForm" class="stack">
+          <label for="fetchId">Fetch a Book (ID)</label>
+          <input id="fetchId" name="bookId" type="number" min="1" required />
+          <button type="submit">Fetch Book</button>
+        </form>
+
+        <form id="fetchByGenreForm" class="stack">
+          <label for="fetchGenre">Fetch by Genre</label>
+          <input id="fetchGenre" name="genre" type="text" required />
+          <button type="submit">Fetch Genre</button>
+        </form>
+      </article>
+
+      <article class="panel">
+        <h2>Add Book</h2>
+        <form id="addBookForm" class="stack">
+          <input name="bookTitle" type="text" placeholder="Book Title" required />
+          <input name="bookGenre" type="text" placeholder="Genre" required />
+          <input name="bookPrice" type="number" min="0" placeholder="Price" required />
+          <input name="authorFirstName" type="text" placeholder="Author First Name" />
+          <input name="authorLastName" type="text" placeholder="Author Last Name" />
+          <input name="bookImageUrl" type="url" placeholder="Image URL (optional)" />
+          <button type="submit">Add Book</button>
+        </form>
+      </article>
+
+      <article class="panel">
+        <h2>Update Book</h2>
+        <form id="updateBookForm" class="stack">
+          <input name="bookId" type="number" min="1" placeholder="Book ID" required />
+          <input name="bookTitle" type="text" placeholder="Book Title" required />
+          <input name="bookGenre" type="text" placeholder="Genre" required />
+          <input name="bookPrice" type="number" min="0" placeholder="Price" required />
+          <input name="authorFirstName" type="text" placeholder="Author First Name" />
+          <input name="authorLastName" type="text" placeholder="Author Last Name" />
+          <input name="bookImageUrl" type="url" placeholder="Image URL (optional)" />
+          <button type="submit">Update Book</button>
+        </form>
+      </article>
+
+      <article class="panel">
+        <h2>Remove Book</h2>
+        <form id="deleteBookForm" class="stack">
+          <input name="bookId" type="number" min="1" placeholder="Book ID" required />
+          <button class="danger" type="submit">Delete Book</button>
+        </form>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Result</h2>
+      <p id="statusMsg" class="status">Ready</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Genre</th>
+              <th>Price</th>
+              <th>Image URL</th>
+            </tr>
+          </thead>
+          <tbody id="bookTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
