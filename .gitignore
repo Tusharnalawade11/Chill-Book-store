@@ -4,3 +4,6 @@ target/
 *.iml
 .idea/
 *.jar
+.project
+.settings/
+.classpath
